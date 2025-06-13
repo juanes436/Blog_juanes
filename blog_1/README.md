@@ -22,4 +22,4 @@ cd blog_1
 
 desarrollado por
 
-juan esteban rodriguez brausin alias(juanes) y el profe henrry
+juan esteban rodriguez brausin alias(juanes) y el profe @hortegon
