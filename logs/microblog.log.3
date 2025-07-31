@@ -1,4 +1,4 @@
-2025-07-17 15:58:04,449 ERROR: Exception on /register [POST] [in C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py:875]
+2025-07-17 15:25:43,806 ERROR: Exception on /login [POST] [in C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
     self.dialect.do_execute(
@@ -10,7 +10,7 @@ Traceback (most recent call last):
   File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
     cursor.execute(statement, parameters)
     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such column: user.about_me
+sqlite3.OperationalError: no such table: user
 
 The above exception was the direct cause of the following exception:
 
@@ -24,26 +24,9 @@ Traceback (most recent call last):
   File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\PROGRAMADOR\Desktop\blog_1\app\routes.py", line 55, in register
-    if form.validate_on_submit():
-       ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
-    return self.is_submitted() and self.validate(extra_validators=extra_validators)
-                                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\wtforms\form.py", line 330, in validate
-    return super().validate(extra)
-           ~~~~~~~~~~~~~~~~^^^^^^^
-  File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\wtforms\form.py", line 147, in validate
-    if not field.validate(self, extra):
-           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\wtforms\fields\core.py", line 234, in validate
-    stop_validation = self._run_validation_chain(form, chain)
-  File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\wtforms\fields\core.py", line 254, in _run_validation_chain
-    validator(form, self)
-    ~~~~~~~~~^^^^^^^^^^^^
-  File "C:\Users\PROGRAMADOR\Desktop\blog_1\app\forms.py", line 27, in validate_username
-    user = db.session.scalar(sa.select(User).where(
-        User.username == username.data))
+  File "C:\Users\PROGRAMADOR\Desktop\blog_1\app\routes.py", line 31, in login
+    user = db.session.scalar(
+        sa.select(User).where(User.username == form.username.data))
   File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1840, in scalar
     return self._proxied.scalar(
            ~~~~~~~~~~~~~~~~~~~~^
@@ -123,24 +106,9 @@ Traceback (most recent call last):
   File "C:\Users\PROGRAMADOR\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
     cursor.execute(statement, parameters)
     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.about_me
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
 [SQL: SELECT user.id, user.username, user.email, user.password_hash, user.about_me, user.last_seen 
 FROM user 
 WHERE user.username = ?]
 [parameters: ('juanes',)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-07-17 15:58:32,043 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-17 15:58:39,412 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-17 15:58:44,532 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-22 16:59:00,110 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 14:38:30,633 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 14:53:39,076 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 14:54:19,790 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 14:54:39,582 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 14:54:46,538 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 15:35:24,647 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 15:39:00,455 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-24 15:44:42,717 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-29 16:54:24,857 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-29 16:58:48,558 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
-2025-07-29 17:34:11,509 INFO: Microblog startup [in C:\Users\PROGRAMADOR\Desktop\blog_1\app\__init__.py:43]
