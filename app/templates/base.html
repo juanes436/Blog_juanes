@@ -5,88 +5,317 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if title %}
-    <title>{{ title }} - inemBook</title>
+    <title>{{ title }} - Empanadas al fallo</title>
     {% else %}
-    <title>Bienvenido a inemBook</title>
+    <title>Bienvenido a Empanadas al fallo</title>
     {% endif %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --empanada-gold: #D4A574;
+            --empanada-brown: #8B4513;
+            --empanada-cream: #F5E6D3;
+            --empanada-dark: #3D2914;
+            --empanada-orange: #E67E22;
+            --empanada-red: #C0392B;
+            --shadow-warm: rgba(212, 165, 116, 0.3);
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f6f9;
+            background: linear-gradient(135deg, var(--empanada-cream) 0%, #FFF8DC 50%, var(--empanada-cream) 100%);
+            background-attachment: fixed;
+            color: var(--empanada-dark);
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+        }
+
+        /* Patrón de fondo sutil */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 25% 25%, rgba(212, 165, 116, 0.1) 2px, transparent 2px),
+                              radial-gradient(circle at 75% 75%, rgba(139, 69, 19, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
         }
 
         .navbar {
-            background-color: #002147 !important;
+            background: linear-gradient(90deg, var(--empanada-brown), var(--empanada-gold)) !important;
+            box-shadow: 0 4px 15px var(--shadow-warm);
+            border-bottom: 3px solid var(--empanada-orange);
         }
 
-        .navbar-brand,
+        .navbar-brand {
+            color: white !important;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand::before {
+            content: '🥟';
+            font-size: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+
+        .navbar-brand:hover {
+            color: var(--empanada-cream) !important;
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
         .nav-link {
-            color: #ffffff !important;
+            color: white !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 15px !important;
+            margin: 0 5px;
+            border-radius: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         .nav-link:hover {
-            color: #ffcc00 !important;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--empanada-cream) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        footer {
-            background-color: #002147;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .alert {
-            border-left: 5px solid #002147;
-        }
-
-        .navbar-brand i {
+        .nav-link i {
             margin-right: 5px;
+            color: var(--empanada-orange);
+        }
+
+        /* Contenido principal */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-warm);
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 2px solid var(--empanada-gold);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--empanada-gold), var(--empanada-orange), var(--empanada-brown), var(--empanada-gold));
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Alertas personalizadas */
+        .alert {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--empanada-orange);
+            background: linear-gradient(90deg, rgba(212, 165, 116, 0.1), rgba(245, 230, 211, 0.3));
+            color: var(--empanada-dark);
+            font-weight: 600;
+        }
+
+        .alert::before {
+            content: '🍽️';
+            margin-right: 10px;
+        }
+
+        /* Pie de página */
+        footer {
+            background: linear-gradient(90deg, var(--empanada-dark), var(--empanada-brown));
+            color: var(--empanada-cream);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 -4px 15px var(--shadow-warm);
+            border-top: 3px solid var(--empanada-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        footer small {
+            color: var(--empanada-gold);
+            font-size: 0.9rem;
+        }
+
+        /* Botón hamburguesa personalizado */
+        .navbar-toggler {
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: white !important;
+            border-radius: 3px;
+        }
+
+        /* Efectos hover para elementos interactivos */
+        .btn-empanada {
+            background: linear-gradient(45deg, var(--empanada-gold), var(--empanada-orange));
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-empanada:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, var(--empanada-orange), var(--empanada-red));
+        }
+
+        /* Animación de entrada suave */
+        .container {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive mejoras */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+            
+            footer {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Efectos de selección */
+        ::selection {
+            background-color: var(--empanada-gold);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background-color: var(--empanada-gold);
+            color: white;
         }
     </style>
 </head>
 
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">
-                <i class="fas fa-graduation-cap"></i> inemBook
+                Empanadas al fallo
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon bg-light rounded"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-home"></i> Inicio</a>
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('explore') }}"><i class="fas fa-book-open"></i> Biblioteca</a>
+                        <a class="nav-link" href="{{ url_for('explore') }}">
+                            <i class="fas fa-compass"></i> Explorar
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-users"></i> Comunidad</a>
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-users"></i> Comunidad
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> Eventos</a>
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-calendar-alt"></i> Eventos
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     {% if current_user.is_anonymous %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+                        <a class="nav-link" href="{{ url_for('login') }}">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><i class="fas fa-user-circle"></i> Perfil</a>
+                        <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">
+                            <i class="fas fa-user-circle"></i> Perfil
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        <a class="nav-link" href="{{ url_for('logout') }}">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a>
                     </li>
                     {% endif %}
                 </ul>
@@ -95,28 +324,93 @@
     </nav>
 
     <!-- Contenido principal -->
-    <div class="container mt-4">
+    <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
-        <div class="alert alert-info shadow-sm" role="alert">{{ message }}</div>
+        <div class="alert shadow-sm" role="alert">{{ message }}</div>
         {% endfor %}
         {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
+        {% block content %}
+        <!-- Contenido de ejemplo para mostrar el diseño -->
+        <div class="text-center mb-4">
+            <h1 class="display-4" style="color: var(--empanada-brown); font-family: 'Fredoka One', cursive;">
+                ¡Bienvenido a Empanadas al fallo! 🥟
+            </h1>
+            <p class="lead" style="color: var(--empanada-dark);">
+                Donde cada empanada cuenta una historia y cada fallo se convierte en aprendizaje
+            </p>
+            <button class="btn btn-empanada">
+                <i class="fas fa-utensils"></i> ¡Comenzar a explorar!
+            </button>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <h3 style="color: var(--empanada-brown);">
+                    <i class="fas fa-fire" style="color: var(--empanada-orange);"></i>
+                    Contenido Principal
+                </h3>
+                <p>Aquí va el contenido principal de tu blog sobre empanadas...</p>
+                
+                <!-- Ejemplo de navegación de posts -->
+                <div class="pagination-links mt-4">
+                    <a href="#">← Newer posts</a>
+                    <a href="#">Older posts →</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 style="color: var(--empanada-brown);">
+                    <i class="fas fa-star" style="color: var(--empanada-gold);"></i>
+                    Sidebar
+                </h4>
+                <p>Contenido lateral, recetas destacadas, etc...</p>
+            </div>
+        </div>
+        {% endblock %}
     </div>
 
     <!-- Pie de página -->
     <footer>
-        <div class="container">
-            <p class="mb-0">© 2025 inemBook · Inspirado en el INEM de Kennedy</p>
-            <small>Sigamos aprendiendo juntos. Contacto: seccion:1115 la mejor programacion</small>
+        <div class="container-fluid">
+            <p class="mb-2">
+                <span style="font-size: 1.2em;">🥟</span>
+                © 2025 Empanadas al fallo · Inspirado en el proyecto del profe
+                <span style="font-size: 1.2em;">🥟</span>
+            </p>
+            <small>
+                <i class="fas fa-heart" style="color: var(--empanada-red);"></i>
+                Sigamos aprendiendo juntos · Contacto: sección 1115 - ¡La mejor programación!
+                <i class="fas fa-code" style="color: var(--empanada-gold);"></i>
+            </small>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    
+    <script>
+        // Animación suave para los enlaces del navbar
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Efecto de parallax suave para el fondo
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.body;
+            const speed = scrolled * 0.5;
+            parallax.style.backgroundPosition = `center ${speed}px`;
+        });
+    </script>
 </body>
 
 </html>
